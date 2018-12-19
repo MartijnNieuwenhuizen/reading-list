@@ -1,0 +1,33 @@
+.teaser {
+  position: relative;
+  padding: var(--spacing-m);
+  border-bottom: var(--spacing-xxs) solid var(--color-black);
+}
+
+.teaser__top {
+  display: grid;
+  grid-template-columns: 1fr 3rem;
+}
+
+.teaser__title {
+  margin: 0;
+}
+.teaser__meta {
+  margin: var(--spacing-xs) 0 0;
+  font-style: normal;
+  grid-column: span 2;
+}
+.teaser__author {
+  font-size: var(--font-size-s);
+}
+.teaser__reading-time {
+  justify-self: end;
+  align-self: center;
+}
+.teaser__tags {
+  margin: var(--spacing-xxl) 0 0 0;
+}
+.teaser__cta {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,10 @@
+:root {
+  --color-primary: hsla(161, 41%, 75%, 1);
+  --color-primary-lighter: hsla(161, 41%, 80%, 0.6);
+  --color-secondary: hsla(7, 82%, 57%, 1);
+  --color-secondary-lighter: hsla(7, 82%, 70%, 0.6);
+
+  --color-gray: #d3d3d3;
+  --color-white: #fff;
+  --color-black: #000;
+}

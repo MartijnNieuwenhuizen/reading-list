@@ -1,0 +1,23 @@
+.action-bar {
+  padding: var(--spacing-xs);
+  background-color: var(--color-primary-lighter);
+}
+
+.action-bar__list {
+  margin: 0;
+  padding: 0;
+}
+.action-bar__item {
+  margin: 0;
+  padding: var(--spacing-xs);
+  list-style-type: none;
+  border-radius: 5px;
+}
+.action-bar__item:hover,
+.action-bar__item:focus {
+  background-color: var(--color-primary);
+}
+
+.action-bar__link {
+  display: block;
+}

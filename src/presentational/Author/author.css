@@ -1,0 +1,11 @@
+.author {
+  display: flex;
+  align-items: flex-end;
+}
+.author__icon {
+  max-width: var(--spacing-m);
+}
+.author__link {
+  margin: 0 0 0 var(--spacing-xxs);
+  text-decoration: none;
+}

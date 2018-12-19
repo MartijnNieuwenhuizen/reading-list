@@ -1,0 +1,36 @@
+{
+  "name": "reading-list",
+  "version": "0.0.1",
+  "description": "A React app used for creating and storing reading lists",
+  "main": "App.js",
+  "author": "Martijn Nieuwenhuizen",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Container",
+    "Presentational"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-scripts": "2.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

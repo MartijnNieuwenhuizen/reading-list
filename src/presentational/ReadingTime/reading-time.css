@@ -1,0 +1,11 @@
+.reading-time {
+  display: flex;
+}
+
+.reading-time__icon {
+  width: var(--spacing-m);
+}
+.reading-time__link {
+  margin: 0 0 0 var(--spacing-xxs);
+  text-decoration: none;
+}

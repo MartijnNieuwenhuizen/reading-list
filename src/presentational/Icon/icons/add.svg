@@ -1,0 +1,8 @@
+<svg width="32px" height="32px" viewBox="0 0 32 32">
+	<g id="add" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+		<path d="M16,1.5 L16,30.5" id="Line-3" stroke="currentColor" stroke-width="3" fill-rule="nonzero">
+		</path>
+		<path d="M16,1.5 L16,30.5" id="Line-3-Copy" stroke="currentColor" stroke-width="3" fill-rule="nonzero" transform="translate(16.000000, 16.000000) rotate(90.000000) translate(-16.000000, -16.000000) ">
+		</path>
+	</g>
+</svg>

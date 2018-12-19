@@ -1,0 +1,8 @@
+<svg width="32px" height="32px" viewBox="0 0 32 32">
+	<g id="Person" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		<circle id="Oval" fill="currentColor" fill-rule="nonzero" cx="16" cy="10" r="7">
+		</circle>
+		<circle id="Oval-Copy" fill="currentColor" fill-rule="nonzero" cx="16" cy="30" r="14">
+		</circle>
+	</g>
+</svg>
