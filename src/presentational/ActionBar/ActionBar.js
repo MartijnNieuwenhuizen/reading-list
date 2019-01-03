@@ -6,10 +6,9 @@ import './action-bar.css'
 export default () => {
   const menuItems = [
     {
-      href: '/',
+      href: '/add-resource',
       screenreaderLabel: 'add an article',
-      iconType: 'add',
-      action: () => {}
+      iconType: 'add'
     },
     {
       href: '/',
@@ -22,7 +21,7 @@ export default () => {
     <nav className="action-bar">
       <ol className="action-bar__list">
         {menuItems.map(menuItem => (
-          <li className="action-bar__item">
+          <li className="action-bar__item" key={menuItem.href}>
             <a className="action-bar__link" href={menuItem.href}>
               <span className="screen-reader">{menuItem.screenreaderLabel}</span>
               <Icon type={menuItem.iconType} />

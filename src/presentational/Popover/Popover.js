@@ -9,12 +9,15 @@ class Popover extends Component {
 
   componentDidMount() {}
 
-  _open() {}
-  _close() {}
+  _open() {
+    this.setState({ opened: true })
+  }
+  _close() {
+    this.setState({ opened: false })
+  }
 
-  render(props) {
-    console.log('this.props: ', this.props)
-    return (
+  render() {
+    const popoverSrc = (
       <div className="popover">
         <div className="popover__controls">
           <button className="popover__hide">+</button>
@@ -22,6 +25,8 @@ class Popover extends Component {
         <div className="popover__inner">{this.props.children}</div>
       </div>
     )
+
+    return this.state.opened ? popoverSrc : <div />
   }
 }
 
