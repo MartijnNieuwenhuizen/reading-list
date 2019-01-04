@@ -8,7 +8,7 @@ export default () => (
   <BrowserRouter>
     <Switch>
       <Route exact path={'/'} component={Home} />
-      <Route path={'/add-resource'} component={AddResource} />
+      <Route exact path={'/add-resource'} component={AddResource} />
 
       <Route component={() => <h1>404 not found</h1>} />
     </Switch>
