@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 
 import App from '../../App'
 import Form from '../../container/Form/Form'
-import FormItem from '../../presentational/form/FormItem'
-import createNewArticle from '../../builders/createNewArticle'
-import splitTags from '../../utils/splitTags/splitTags'
-import addSingleArticle from '../../redux/actions/addSingleArticle'
+import FormItem from '../../presentational/Form/FormItem'
+import createNewArticle from '../../utils/createNewArticle/createNewArticle'
+
+import { addSingleArticle } from '../../redux/actions/addArticle'
+
 import './add-resource.css'
 
 class AddResources extends Component {
@@ -54,25 +55,20 @@ class AddResources extends Component {
     }
   ]
 
-  onSubmit(event) {
+  async onSubmit(event) {
     event.preventDefault()
 
     const formInput = this.formItems.reduce((total, formItem) => {
       total[formItem.id] = formItem.ref.current.value
+
       return total
     }, {})
 
     const { title, author, url, tags } = formInput
-
-    // create new article item with this data
-    const newArticle = createNewArticle(title, author, url, splitTags(tags), null)
-    // @TODO: createReadingTimeInMunites with online service I build
-    // @TODO: Create a helper for this!?!?!?!?!? it is part of the adding of resources, but it would be nice if it was tucked away!
-
-    // set item in Redux DB
-    // redux.POST(newArticle)
+    const newArticle = await createNewArticle(title, author, url, tags)
     this.props.addSingleArticle(newArticle)
   }
+
   render() {
     const title = 'Submit a new resource to your list!'
     const method = 'POST'

@@ -1,11 +1,15 @@
-import allArticlesData from '../../data/allArticlesData'
+const initialState = { articles: [] }
 
-const initialState = { articles: allArticlesData }
-
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
+  console.log('action: ', action)
+  console.log('action.type: ', action.type)
   switch (action.type) {
     case 'ADD_SINGLE_ARTICLE': {
       return { articles: [action.payload.content, ...state.articles] }
+    }
+
+    case 'ADD_BULK_ARTICLE': {
+      return { articles: [...action.payload, ...state.articles] }
     }
 
     default: {

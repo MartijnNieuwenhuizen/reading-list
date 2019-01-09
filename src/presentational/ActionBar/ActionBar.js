@@ -20,6 +20,11 @@ export default () => {
       href: '/',
       screenreaderLabel: 'search',
       iconType: 'search'
+    },
+    {
+      href: '/table-view',
+      screenreaderLabel: 'T',
+      iconType: 'T'
     }
   ]
 
