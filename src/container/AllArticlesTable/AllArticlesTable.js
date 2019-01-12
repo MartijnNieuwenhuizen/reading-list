@@ -5,11 +5,37 @@ import { addBulkArticle } from '../../redux/actions/addArticle'
 import { get } from '../../utils/fetch'
 
 import Form from '../Form/Form'
-import FormItem from '../../presentational/Form/FormItem'
 import FormItemInline from '../../presentational/Form/FormItemInline'
 
-const mapStateToProps = state => ({ articles: state.articles })
+import { reduxForm, FieldArray } from 'redux-form'
+
+const mapStateToProps = state => {
+  console.log('state mapStateToProps: ', state)
+
+  let foo = {}
+
+  if (state.articles.length) {
+    foo = state.articles.reduce((all, item) => {
+      all[item._id] = item
+      return all
+    }, {})
+  }
+
+  return { articles: foo }
+}
 const mapDispatchToProps = dispatch => bindActionCreators({ addBulkArticle }, dispatch)
+
+const Foo = formData => {
+  console.log('formData: ', formData)
+  console.log('formData.fields.length: ', formData.fields.length)
+
+  return (
+    <div>
+      <h1>Hellloo from the formArray!</h1>
+      <p>I have {formData.fields.length} items</p>
+    </div>
+  )
+}
 
 class AllArticlesTable extends Component {
   constructor(props) {
@@ -38,23 +64,13 @@ class AllArticlesTable extends Component {
   render() {
     const { articles } = this.props
     console.log('articles: ', articles)
-    const enhancesArticle = [
-      ...articles,
-      {
-        _id: 'foo',
-        title: '',
-        authorName: '',
-        href: ''
-      }
-    ]
-
-    console.log('enhancesArticle: ', enhancesArticle)
 
     return (
       <Fragment>
         <Form>
           <ol className="article-lines">
-            {enhancesArticle.map(article => (
+            <FieldArray component={Foo} name="articles" />
+            {/* {enhancesArticle.map(article => (
               <li className="article-line" key={article._id}>
                 <FormItemInline
                   type="text"
@@ -86,7 +102,7 @@ class AllArticlesTable extends Component {
                   value={article.href}
                 />
               </li>
-            ))}
+            ))} */}
           </ol>
         </Form>
       </Fragment>
@@ -94,8 +110,11 @@ class AllArticlesTable extends Component {
   }
 }
 
-// @TODO: probably move this to the app.js!? because it's the core data of the application
+const InitializeForm = reduxForm({
+  form: 'AllArticlesTable'
+})(AllArticlesTable)
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AllArticlesTable)
+)(InitializeForm)
