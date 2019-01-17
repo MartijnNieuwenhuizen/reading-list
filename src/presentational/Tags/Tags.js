@@ -1,6 +1,7 @@
 import React from 'react'
 import './tags.css'
 
+// @TODO: temp don't show the tags due to DB save issues
 export default props => (
   <ul className="tags">
     {props.tags.map(tag => (

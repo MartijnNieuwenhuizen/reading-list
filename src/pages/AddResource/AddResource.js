@@ -1,33 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { Component } from 'react'
 
-import Form from '../../presentational/Form/Form'
-import AddResource from '../../container/AddResource/AddResource'
+import App from '../../App'
+import Form from '../../container/Form/Form'
+import FormItem from '../../presentational/Form/FormItem'
+import createNewArticle from '../../utils/createNewArticle/createNewArticle'
+import { postArticle } from '../../api/articles'
 
 import './add-resource.css'
 
-export default () => {
-  const title = 'Submit a new resource to your list!'
-  const method = 'POST'
-  const submitLabel = 'Add to collection'
-  const submitAction = event => {
-    event.preventDefault()
-
-    const formInput = formItems.map(formItem => ({
-      [formItem.id]: formItem.ref.current.value
-    }))
-
-    console.log('formInput: ', formInput)
+class AddResources extends Component {
+  constructor(props) {
+    super(props)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
-  const previewTags = () => console.log('previewTags')
-
-  const formItems = [
+  formItems = [
     {
       label: 'Title',
       id: 'title',
       placeholder: 'This is the best article ever!',
       type: 'text',
-      method: null,
+      onFocus: () => 'onFocus',
+      onBlur: () => 'onBlur',
       ref: React.createRef()
     },
     {
@@ -35,7 +29,8 @@ export default () => {
       id: 'author',
       placeholder: 'You know who!',
       type: 'text',
-      method: null,
+      onFocus: () => 'onFocus',
+      onBlur: () => 'onBlur',
       ref: React.createRef()
     },
     {
@@ -43,7 +38,8 @@ export default () => {
       id: 'url',
       placeholder: 'www.best-ever.design',
       type: 'url',
-      method: null,
+      onFocus: () => 'onFocus',
+      onBlur: () => 'onBlur',
       ref: React.createRef()
     },
     {
@@ -51,25 +47,58 @@ export default () => {
       id: 'tags',
       placeholder: 'JS CSS HTML ETC',
       type: 'text',
-      method: {
-        type: 'click',
-        func: previewTags
-      },
+      onFocus: () => 'previewTags',
+      onBlur: () => 'onBlur',
       ref: React.createRef()
     }
   ]
 
-  return (
-    <Fragment>
-      <AddResource>
-        <Form
-          title={title}
-          method={method}
-          formItems={formItems}
-          submitLabel={submitLabel}
-          submitAction={submitAction}
-        />
-      </AddResource>
-    </Fragment>
-  )
+  async onSubmit(event) {
+    event.preventDefault()
+
+    const formInput = this.formItems.reduce((total, formItem) => {
+      total[formItem.id] = formItem.ref.current.value
+
+      return total
+    }, {})
+
+    const { title, author, url, tags } = formInput
+    const newArticle = await createNewArticle(title, author, url, tags)
+    postArticle(newArticle)
+    // this.props.addSingleArticle(newArticle)
+  }
+
+  render() {
+    const title = 'Submit a new resource to your list!'
+    const method = 'POST'
+    const submitLabel = 'Add to collection'
+    // const previewTags = () => console.log('previewTags')
+
+    return (
+      <App>
+        <Form method={method} onSubmit={this.onSubmit}>
+          <fieldset>
+            <legend>{title}</legend>
+
+            {this.formItems.map(item => (
+              <FormItem
+                type={item.type}
+                id={item.id}
+                key={item.id}
+                label={item.label}
+                placeholder={item.placeholder}
+                refProp={item.ref}
+                onFocus={item.onFocus}
+                onBlur={item.onBlur}
+              />
+            ))}
+
+            <button type="submit">{submitLabel}</button>
+          </fieldset>
+        </Form>
+      </App>
+    )
+  }
 }
+
+export default AddResources

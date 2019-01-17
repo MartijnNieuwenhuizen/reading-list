@@ -5,7 +5,6 @@ import './basic-styles/typography.css'
 import './basic-styles/base.css'
 import './app.css'
 
-import Router from './Router'
 import ActionBar from './presentational/ActionBar/ActionBar'
 
 // @TODO: Create a popover, use react routing for this and render the correct component inside a generic popover
@@ -15,9 +14,7 @@ class App extends Component {
     return (
       <main className="app">
         <ActionBar />
-        <div>
-          <Router />
-        </div>
+        <div>{this.props.children}</div>
       </main>
     )
   }
