@@ -3,17 +3,16 @@ export const get = async url => {
     const response = await fetch(url, { method: 'GET' })
     return await response.json()
   } catch (err) {
-    console.log('err: ', err)
     return []
   }
 }
 
 export const post = async (url, payload) => {
+  const enhancedUrl = `${url}?articleData=${encodeURIComponent(payload)}`
+
   try {
-    const response = await fetch(url, { method: 'GET' })
-    return await response.json()
+    await fetch(enhancedUrl, { method: 'POST' })
   } catch (err) {
-    console.log('err: ', err)
-    return []
+    throw new Error(err)
   }
 }

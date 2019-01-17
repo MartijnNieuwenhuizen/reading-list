@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react'
 
 import App from '../../App'
 import Form from '../../container/Form/Form'
 import FormItem from '../../presentational/Form/FormItem'
 import createNewArticle from '../../utils/createNewArticle/createNewArticle'
-
-import { addSingleArticle } from '../../redux/actions/addArticle'
+import { postArticle } from '../../api/articles'
 
 import './add-resource.css'
 
@@ -66,7 +64,8 @@ class AddResources extends Component {
 
     const { title, author, url, tags } = formInput
     const newArticle = await createNewArticle(title, author, url, tags)
-    this.props.addSingleArticle(newArticle)
+    postArticle(newArticle)
+    // this.props.addSingleArticle(newArticle)
   }
 
   render() {
@@ -102,7 +101,4 @@ class AddResources extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addSingleArticle }
-)(AddResources)
+export default AddResources

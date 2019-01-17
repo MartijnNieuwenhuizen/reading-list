@@ -1,4 +1,4 @@
-import articleBuilder from './articleBuilder'
+import ArticleBuilder from './ArticleBuilder'
 import splitTags from '../splitTags/splitTags'
 import getReadingTimeInMinutes from '../getReadingTimeInMinutes'
 
@@ -18,5 +18,14 @@ export default async (title, author, url, tags) => {
   const currentDate = createDate()
   const read = false
 
-  return articleBuilder(title, author, url, formattedTags, readingTimeInMinutes, currentDate, read)
+  return new ArticleBuilder()
+    .createInstance()
+    .addTitle(title)
+    .addHref(url)
+    .addAuthorName(author)
+    .addReadingTimeInMinutes(readingTimeInMinutes)
+    .addTags(formattedTags)
+    .addDate(currentDate)
+    .addRead(read)
+    .getResult()
 }
