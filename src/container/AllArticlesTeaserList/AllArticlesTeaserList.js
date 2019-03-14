@@ -7,6 +7,7 @@ class AllArticlesTeaserList extends Component {
   async componentDidMount() {
     // Go get the articles from the server
     const articles = await getAllArticles()
+    console.log('articles: ', articles)
 
     // Set the articles to the Context
     const context = this.context

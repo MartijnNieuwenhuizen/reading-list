@@ -9,18 +9,18 @@ export default () => {
     {
       href: '/',
       screenreaderLabel: 'Go to home',
-      iconType: 'home'
+      iconType: 'home',
     },
     {
-      href: '/add-resource',
+      href: '/add-article',
       screenreaderLabel: 'add an article',
-      iconType: 'add'
+      iconType: 'add',
     },
     {
       href: '/',
       screenreaderLabel: 'search',
-      iconType: 'search'
-    }
+      iconType: 'search',
+    },
   ]
 
   return (
@@ -29,7 +29,9 @@ export default () => {
         {menuItems.map(menuItem => (
           <li className="action-bar__item" key={menuItem.iconType}>
             <Link className="action-bar__link" to={menuItem.href}>
-              <span className="screen-reader">{menuItem.screenreaderLabel}</span>
+              <span className="screen-reader">
+                {menuItem.screenreaderLabel}
+              </span>
               <Icon type={menuItem.iconType} />
             </Link>
           </li>
