@@ -1,0 +1,9 @@
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-s);
+
+  border-radius: 50%;
+  line-height: 1;
+}

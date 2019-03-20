@@ -6,12 +6,14 @@ class ContextProvider extends Component {
     articles: [],
     updateArticlesList: articles => {
       this.setState({ articles })
-    }
+    },
   }
 
   render() {
     return (
-      <ArticleContext.Provider value={this.state}>{this.props.children}</ArticleContext.Provider>
+      <ArticleContext.Provider value={this.state}>
+        {this.props.children}
+      </ArticleContext.Provider>
     )
   }
 }

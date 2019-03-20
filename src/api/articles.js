@@ -8,31 +8,10 @@ import config from '../config'
 // **RULES**
 
 /**
- * Parse all JSON strings to create a useful object for the application
- * @param {Object} article
- */
-const decodeArticle = article => ({
-  ...article,
-  tags: JSON.parse(article.tags)
-})
-
-/**
- * Encode article to prevent having multiple nesting levels
- * @param {Object} article
- */
-const encodeArticle = article =>
-  JSON.stringify({
-    ...article,
-    tags: JSON.stringify(article.tags)
-  })
-
-/**
  * Get all articles from the server
  */
 export const getAllArticles = async () => {
-  const response = await get(config.getAllArticlesUrl)
-
-  return response.map(decodeArticle)
+  return await get(config.getAllArticlesUrl)
 }
 
 /**
@@ -41,8 +20,12 @@ export const getAllArticles = async () => {
  */
 export const postArticle = async article => {
   try {
-    await post(config.postArticleUrl, encodeArticle(article))
+    const url = config.postArticleUrl
+    const articleAsString = JSON.stringify(article)
+    const postAction = await post(url, articleAsString)
+
+    return postAction
   } catch (err) {
-    throw new Error(err)
+    return err
   }
 }

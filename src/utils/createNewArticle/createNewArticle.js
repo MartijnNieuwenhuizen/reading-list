@@ -1,12 +1,13 @@
 import ArticleBuilder from './ArticleBuilder'
 import splitTags from '../splitTags/splitTags'
 import getReadingTimeInMinutes from '../getReadingTimeInMinutes'
+import slugify from 'slugify'
 
 const formatTags = tags => {
   const tagsList = splitTags(tags)
   return tagsList.map(tag => ({
-    href: '/',
-    label: tag
+    slug: slugify(tag),
+    label: tag,
   }))
 }
 

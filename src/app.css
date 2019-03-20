@@ -1,4 +1,9 @@
 :root {
+  --color-primary: PowderBlue;
+  --color-secondary: DarkSlateBlue;
+  --color-white: #fff;
+  --color-black: #000;
+
   --spacing-xxxl: 2.5rem;
   --spacing-xxl: 2rem;
   --spacing-xl: 1.7rem;
@@ -28,6 +33,10 @@
   --breakpoint-m: 768px;
   --breakpoint-l: 1024px;
   --breakpoint-xl: 1366px;
+
+  --constrain-s: 800px;
+  --constrain-m: 1200px;
+  --constrain-l: 1800px;
 }
 
 *,
@@ -69,4 +78,45 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-gap: 0.5rem;
+}
+
+/* Layout */
+.page-item {
+  margin: 8rem 0;
+  padding: 0;
+}
+.content-item {
+  margin: 2rem 0;
+  padding: 0;
+}
+.text-item {
+  margin: 0.7rem 0;
+  padding: 0;
+}
+
+.constrain--s {
+  max-width: var(--constrain-s);
+  margin: 0 auto;
+}
+.constrain {
+  max-width: var(--constrain-m);
+  margin: 0 auto;
+}
+.constrain--l {
+  max-width: var(--constrain-l);
+  margin: 0 auto;
+}
+
+/* Default stylings */
+button {
+  padding: var(--spacing-xs) var(--spacing-s);
+
+  border: 0;
+  border-radius: 5px;
+
+  font-size: inherit;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
 }
