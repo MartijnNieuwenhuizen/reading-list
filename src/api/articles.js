@@ -8,22 +8,10 @@ import config from '../config'
 // **RULES**
 
 /**
- * Parse all JSON strings to create a useful object for the application
- * @param {Object} article
- */
-const decodeArticle = article => ({
-  ...article,
-  tags: JSON.parse(article.tags),
-})
-
-/**
  * Get all articles from the server
  */
 export const getAllArticles = async () => {
-  const response = await get(config.getAllArticlesUrl)
-  console.log('response: ', response)
-  return response
-  // return response.map(decodeArticle)
+  return await get(config.getAllArticlesUrl)
 }
 
 /**

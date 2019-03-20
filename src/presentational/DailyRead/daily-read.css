@@ -1,0 +1,11 @@
+.daily-read {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-l) 0;
+}
+.daily-read__title {
+}
+.daily-read__promo {
+  max-width: var(--constrain-s);
+}

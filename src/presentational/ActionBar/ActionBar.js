@@ -17,7 +17,7 @@ export default () => {
       iconType: 'add',
     },
     {
-      href: '/',
+      href: '/search',
       screenreaderLabel: 'search',
       iconType: 'search',
     },

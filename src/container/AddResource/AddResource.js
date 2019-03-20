@@ -64,7 +64,7 @@ class AddResources extends Component {
 
     const { title, author, url, tags } = formInput
     const newArticle = await createNewArticle(title, author, url, tags)
-    const foo = await postArticle(newArticle)
+    await postArticle(newArticle)
     // Add action after posting the article
   }
 

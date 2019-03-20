@@ -33,6 +33,10 @@
   --breakpoint-m: 768px;
   --breakpoint-l: 1024px;
   --breakpoint-xl: 1366px;
+
+  --constrain-s: 800px;
+  --constrain-m: 1200px;
+  --constrain-l: 1800px;
 }
 
 *,
@@ -78,7 +82,7 @@
 
 /* Layout */
 .page-item {
-  margin: 4rem 0;
+  margin: 8rem 0;
   padding: 0;
 }
 .content-item {
@@ -88,6 +92,19 @@
 .text-item {
   margin: 0.7rem 0;
   padding: 0;
+}
+
+.constrain--s {
+  max-width: var(--constrain-s);
+  margin: 0 auto;
+}
+.constrain {
+  max-width: var(--constrain-m);
+  margin: 0 auto;
+}
+.constrain--l {
+  max-width: var(--constrain-l);
+  margin: 0 auto;
 }
 
 /* Default stylings */
