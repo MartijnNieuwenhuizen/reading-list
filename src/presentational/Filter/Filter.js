@@ -1,6 +1,4 @@
 import React from 'react'
-import Foo from '../Foo/Foo'
-
 import './filter.css'
 
 export default props => {
@@ -10,7 +8,7 @@ export default props => {
       <ol className="filter__list">
         {items.map(item => (
           <li className="filter__item" key={item.count}>
-            <Foo />
+            foo
           </li>
         ))}
       </ol>

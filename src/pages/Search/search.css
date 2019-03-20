@@ -1,0 +1,24 @@
+.search-x {
+  min-height: 100vh;
+}
+
+.search-x__input {
+  transform: translateY(20vh);
+  transition: var(--pace-slow) var(--ease-in-out) transform;
+}
+.search-x__input--with-results {
+  transform: translateY(0);
+}
+
+.search-x__results {
+  transform: translateY(20vh);
+  opacity: 0;
+  transition: var(--pace-slow) var(--delay-short) var(--ease-in-out) transform,
+    var(--pace-slow) var(--delay-default) var(--ease-in-out) opacity;
+}
+.search-x__results--with-results {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Ease in of the results is the same but with an opacity transition and a very short delay  */

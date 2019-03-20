@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 
-import App from '../../App'
-import Form from '../../container/Form/Form'
-import FormItem from '../../presentational/Form/FormItem'
+import AddResourcess from '../../presentational/AddResource/AddResource'
 import createNewArticle from '../../utils/createNewArticle/createNewArticle'
 import { postArticle } from '../../api/articles'
-
-import './add-resource.css'
 
 class AddResources extends Component {
   constructor(props) {
@@ -22,7 +18,8 @@ class AddResources extends Component {
       type: 'text',
       onFocus: () => 'onFocus',
       onBlur: () => 'onBlur',
-      ref: React.createRef()
+      ref: React.createRef(),
+      input: 'foo',
     },
     {
       label: 'Author',
@@ -31,7 +28,8 @@ class AddResources extends Component {
       type: 'text',
       onFocus: () => 'onFocus',
       onBlur: () => 'onBlur',
-      ref: React.createRef()
+      ref: React.createRef(),
+      input: 'bar',
     },
     {
       label: 'URL',
@@ -40,7 +38,8 @@ class AddResources extends Component {
       type: 'url',
       onFocus: () => 'onFocus',
       onBlur: () => 'onBlur',
-      ref: React.createRef()
+      ref: React.createRef(),
+      input: 'http://martijnnieuwenhuizen.nl',
     },
     {
       label: 'Tags',
@@ -49,8 +48,9 @@ class AddResources extends Component {
       type: 'text',
       onFocus: () => 'previewTags',
       onBlur: () => 'onBlur',
-      ref: React.createRef()
-    }
+      ref: React.createRef(),
+      input: 'foo bar',
+    },
   ]
 
   async onSubmit(event) {
@@ -64,39 +64,16 @@ class AddResources extends Component {
 
     const { title, author, url, tags } = formInput
     const newArticle = await createNewArticle(title, author, url, tags)
-    postArticle(newArticle)
-    // this.props.addSingleArticle(newArticle)
+    await postArticle(newArticle)
+    // Add action after posting the article
   }
 
   render() {
     const title = 'Submit a new resource to your list!'
     const method = 'POST'
-    const submitLabel = 'Add to collection'
-    // const previewTags = () => console.log('previewTags')
 
     return (
-      <App>
-        <Form method={method} onSubmit={this.onSubmit}>
-          <fieldset>
-            <legend>{title}</legend>
-
-            {this.formItems.map(item => (
-              <FormItem
-                type={item.type}
-                id={item.id}
-                key={item.id}
-                label={item.label}
-                placeholder={item.placeholder}
-                refProp={item.ref}
-                onFocus={item.onFocus}
-                onBlur={item.onBlur}
-              />
-            ))}
-
-            <button type="submit">{submitLabel}</button>
-          </fieldset>
-        </Form>
-      </App>
+      <AddResourcess title={title} method={method} formItems={this.formItems} />
     )
   }
 }

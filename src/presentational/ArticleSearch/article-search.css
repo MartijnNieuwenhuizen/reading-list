@@ -1,0 +1,20 @@
+.article-search__title {
+  margin: 0 0 4rem;
+  text-align: center;
+  font-size: 10rem;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  transition: var(--pace-slow) var(--ease-in-out) font-size,
+    var(--pace-slow) var(--ease-in-out) margin;
+}
+.article-search__title--active {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.article-search__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--spacing-l);
+}
